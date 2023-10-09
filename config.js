@@ -3,16 +3,17 @@ const config = {
   logLevel: "debug",
 
   // acmeResources/veh_trak/gps/v2/{route}/{vehType}/{vehID}/{lat}/{lng}/{dir}/{status}
-  topicPrefix: "acmeResources/veh_trak/gps/v2/",
-  title: "Real-time Connected Mining Demo",
+  topicPrefix: "sanfran/bus/veh_trak/gps/v2/",
+  title: "Real-time Connected Fleet Demo",
   subTitles: [
     "Bidirectional IoT Communication using MQTT",
     "Advanced Filtering and Routing Capabilities"
   ],
 
-  googleApiKey: "AIzaSyCfUpei863cqkmQvV9KavBsjybNQ4hr6wA",
+  //googleApiKey: "AIzaSyCfUpei863cqkmQvV9KavBsjybNQ4hr6wA",
+  googleApiKey: "key",
   mapOptions: {
-    center: { lat: -23.3644177610712, lng: 119.67464837435948 }, // Newman Mine Site
+    center: { lat: 37.65697400684236, lng: -122.3915164857602}, // Newman Mine Site
     zoom: 16,
     mapId: "DEMO_MAP_ID",
     mapTypeId: 'hybrid',
@@ -30,10 +31,10 @@ const config = {
     SessionProperties: {
       // check (https://docs.solace.com/API-Developer-Online-Ref-Documentation/js/solace.SessionProperties.html)
       // for details of all properties
-      url: "ws://localhost:8008",
-      vpnName: "default",
-      userName: "default",
-      password: "default",
+      url: "wss://mr-connection-9hw7diagtnp.messaging.solace.cloud:443",
+      vpnName: "jamieson-demo-mesh-gcp",
+      userName: "solace-cloud-client",
+      password: "password",
     },
     // FATAL: 0, ERROR: 1, WARN: 2, INFO: 3, DEBUG: 4, TRACE: 5
     // NOTICE: works only with "solclientjs-debug.js"
@@ -42,24 +43,18 @@ const config = {
 
   iconBase: "./icons/",
   vehicleTypes: {
-    HAUL: { // type name
-      reportInterval: 3, // seconds
+    bus: { // type name
+      reportInterval: 2, // seconds
       icon: "haul.svg",
-      bodyLength: 15, // meters
-      infoImage: "haul-truck-info.jpeg"
+      bodyLength: 20, // meters
+      infoImage: "genentech-coach.png"
     },
-    WATER: {
-      reportInterval: 3, // seconds
-      icon: "water.svg",
-      bodyLength: 15, // meters
-      infoImage: "water-truck-info.png"
-    },
-    ORECAR: {
-      reportInterval: 3, // seconds
+    delivery: {
+      reportInterval: 2,
       icon: "orecar.svg",
-      bodyLength: 15, // meters
+      bodyLength: 20,
       infoImage: "ore-car-info.jpg"
-    },
+    }
   }
 }
 
